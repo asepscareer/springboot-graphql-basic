@@ -1,16 +1,15 @@
+type Employee {
+    id: ID
+    name: String
+}
+
 type Query {
-  bookById(id: ID): Book
+    employeeById (id: ID): Employee
+    allEmployee: [Employee]
 }
 
-type Book {
-  id: ID
-  name: String
-  pageCount: Int
-  author: Author
-}
-
-type Author {
-  id: ID
-  firstName: String
-  lastName: String
+type Mutation {
+    addEmployee (id: ID, name: String): Employee
+    updateEmployee (id: ID, name: String): Employee
+    deleteEmployee (id: ID) : String
 }
