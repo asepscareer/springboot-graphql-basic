@@ -22,7 +22,3 @@ dependencies {
 	testImplementation 'org.springframework:spring-webflux'
 	testImplementation 'org.springframework.graphql:spring-graphql-test'
 }
-
-tasks.named('test') {
-	useJUnitPlatform()
-}

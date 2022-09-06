@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    image: 'graphql:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tests
+      - SPRING_DATASOURCE_USERNAME=asepsaputra
+      - SPRING_DATASOURCE_PASSWORD=p@ssword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres'
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=asepsaputra
+      - POSTGRES_PASSWORD=p@ssword
+      - POSTGRES_DB=tests
