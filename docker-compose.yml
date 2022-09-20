@@ -10,6 +10,7 @@ services:
       - 8080:8080
     depends_on:
       - db
+      - cache
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tests
       - SPRING_DATASOURCE_USERNAME=asepsaputra
@@ -25,3 +26,11 @@ services:
       - POSTGRES_USER=asepsaputra
       - POSTGRES_PASSWORD=p@ssword
       - POSTGRES_DB=tests
+  cache:
+    image: "redis"
+    container_name: cache
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
